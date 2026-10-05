@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
@@ -40,8 +41,8 @@
 
       <p class="header-description">
         Location-based weather observation, JMA Himawari
-        satellite imagery, historical MATLAB U-Net cloud
-        segmentation results, and rain attenuation assessment.
+        satellite imagery, MATLAB U-Net cloud segmentation,
+        and rain attenuation assessment.
       </p>
 
     </div>
@@ -61,35 +62,50 @@
       aria-label="Prototype progress"
     >
 
-      <div class="progress-item active" data-progress="1">
+      <div
+        class="progress-item active"
+        data-progress="1"
+      >
         <span>1</span>
         <small>Location</small>
       </div>
 
       <div class="progress-line"></div>
 
-      <div class="progress-item" data-progress="2">
+      <div
+        class="progress-item"
+        data-progress="2"
+      >
         <span>2</span>
         <small>Weather</small>
       </div>
 
       <div class="progress-line"></div>
 
-      <div class="progress-item" data-progress="3">
+      <div
+        class="progress-item"
+        data-progress="3"
+      >
         <span>3</span>
         <small>Satellite</small>
       </div>
 
       <div class="progress-line"></div>
 
-      <div class="progress-item" data-progress="4">
+      <div
+        class="progress-item"
+        data-progress="4"
+      >
         <span>4</span>
         <small>MATLAB</small>
       </div>
 
       <div class="progress-line"></div>
 
-      <div class="progress-item" data-progress="5">
+      <div
+        class="progress-item"
+        data-progress="5"
+      >
         <span>5</span>
         <small>Link</small>
       </div>
@@ -97,9 +113,8 @@
     </nav>
 
 
-
     <!-- =====================================================
-         STEP 1 — LOCATION
+         STAGE 1 — LOCATION
     ====================================================== -->
 
     <section
@@ -109,7 +124,9 @@
 
       <div class="section-heading">
 
-        <span class="section-number">01</span>
+        <span class="section-number">
+          01
+        </span>
 
         <div>
 
@@ -142,9 +159,11 @@
           </label>
 
           <select id="regionSelect">
+
             <option value="">
               Loading regions...
             </option>
+
           </select>
 
         </div>
@@ -160,9 +179,11 @@
             id="provinceSelect"
             disabled
           >
+
             <option value="">
               Select a region first
             </option>
+
           </select>
 
         </div>
@@ -178,9 +199,11 @@
             id="municipalitySelect"
             disabled
           >
+
             <option value="">
               Select a province first
             </option>
+
           </select>
 
         </div>
@@ -224,22 +247,6 @@
       </div>
 
 
-      <div class="source-note">
-
-        <strong>
-          Location Data
-        </strong>
-
-        <p>
-          Philippine administrative lists are retrieved from
-          PSGC Cloud. The confirmed municipality is geocoded
-          to obtain an approximate reference coordinate for
-          the weather and satellite stages.
-        </p>
-
-      </div>
-
-
       <div class="navigation-actions">
 
         <span></span>
@@ -258,9 +265,8 @@
     </section>
 
 
-
     <!-- =====================================================
-         STEP 2 — WEATHER
+         STAGE 2 — WEATHER
     ====================================================== -->
 
     <section
@@ -271,7 +277,9 @@
 
       <div class="section-heading">
 
-        <span class="section-number">02</span>
+        <span class="section-number">
+          02
+        </span>
 
         <div>
 
@@ -393,23 +401,6 @@
       </p>
 
 
-      <div class="source-note">
-
-        <strong>
-          Weather Source
-        </strong>
-
-        <p>
-          Weather values are retrieved from Open-Meteo for
-          the selected municipality reference coordinates.
-          These values represent modeled weather conditions
-          and are not direct measurements from a local
-          rain gauge.
-        </p>
-
-      </div>
-
-
       <div class="navigation-actions">
 
         <button
@@ -433,9 +424,8 @@
     </section>
 
 
-
     <!-- =====================================================
-         STEP 3 — HIMAWARI B07
+         STAGE 3 — HIMAWARI B07
     ====================================================== -->
 
     <section
@@ -446,7 +436,9 @@
 
       <div class="section-heading">
 
-        <span class="section-number">03</span>
+        <span class="section-number">
+          03
+        </span>
 
         <div>
 
@@ -464,13 +456,8 @@
 
 
       <p class="section-description">
-        Regional Himawari observation using
-        <strong>
-          B07 — Short Wave Infrared
-        </strong>.
-        This satellite view is presented as live observational
-        context and is not processed by the existing Landsat
-        U-Net model.
+        Latest available Himawari B07 Short Wave Infrared
+        satellite imagery for Southeast Asia.
       </p>
 
 
@@ -487,27 +474,7 @@
       </div>
 
 
-      <div class="satellite-toolbar">
-
-        <button
-          id="loadSatelliteButton"
-          class="primary-button"
-          type="button"
-        >
-          Load Latest Himawari B07
-        </button>
-
-      </div>
-
-
-      <p
-        id="satelliteStatus"
-        class="status-message"
-        role="status"
-      >
-        Satellite imagery has not been loaded.
-      </p>
-
+      <!-- HIMAWARI IMAGE -->
 
       <div class="satellite-layout">
 
@@ -525,9 +492,11 @@
               id="satellitePlaceholder"
               class="image-placeholder"
             >
+
               <span>
-                JMA Himawari B07 imagery will appear here.
+                Loading latest Himawari B07 imagery...
               </span>
+
             </div>
 
           </div>
@@ -542,6 +511,34 @@
 
       </div>
 
+
+      <!-- LOAD / REFRESH BUTTON IS BELOW IMAGE -->
+
+      <div class="satellite-toolbar">
+
+        <button
+          id="loadSatelliteButton"
+          class="primary-button"
+          type="button"
+        >
+          Load Latest Himawari B07
+        </button>
+
+      </div>
+
+
+      <!-- STATUS IS ALSO BELOW IMAGE -->
+
+      <p
+        id="satelliteStatus"
+        class="status-message"
+        role="status"
+      >
+        Loading latest Himawari B07 imagery...
+      </p>
+
+
+      <!-- SATELLITE DETAILS -->
 
       <div class="metric-grid">
 
@@ -598,42 +595,6 @@
       </div>
 
 
-      <div class="source-note">
-
-        <strong>
-          Important Satellite Interpretation
-        </strong>
-
-        <p>
-          The B07 image is used as current regional
-          satellite context. It is not directly segmented
-          by the MATLAB U-Net because the existing network
-          was trained using the historical 38-Cloud
-          Landsat dataset with a different sensor,
-          spectral configuration, spatial resolution,
-          and data distribution.
-        </p>
-
-      </div>
-
-
-      <div class="important-note">
-
-        <strong>
-          Prototype Limitation
-        </strong>
-
-        <p>
-          Applying the Landsat-trained model directly to
-          live Himawari B07 imagery would not provide a
-          scientifically valid segmentation result without
-          suitable Himawari training masks, preprocessing,
-          and model retraining or adaptation.
-        </p>
-
-      </div>
-
-
       <div class="navigation-actions">
 
         <button
@@ -657,9 +618,8 @@
     </section>
 
 
-
     <!-- =====================================================
-         STEP 4 — MATLAB U-NET
+         STAGE 4 — MATLAB U-NET
     ====================================================== -->
 
     <section
@@ -670,7 +630,9 @@
 
       <div class="section-heading">
 
-        <span class="section-number">04</span>
+        <span class="section-number">
+          04
+        </span>
 
         <div>
 
@@ -687,31 +649,7 @@
       </div>
 
 
-      <p class="section-description">
-        Historical cloud-segmentation demonstration using
-        the 38-Cloud satellite-image dataset and the trained
-        MATLAB U-Net model.
-      </p>
-
-
-      <div class="matlab-summary-card">
-
-        <span class="matlab-small-label">
-          HISTORICAL DATASET DEMONSTRATION
-        </span>
-
-        <h3>
-          38-Cloud Cloud Segmentation
-        </h3>
-
-        <p>
-          The U-Net was trained in MATLAB using prepared
-          Landsat image patches containing red, green,
-          blue, and near-infrared bands.
-        </p>
-
-      </div>
-
+      <!-- SIMPLE MATLAB WORKFLOW -->
 
       <div class="matlab-flow">
 
@@ -720,10 +658,6 @@
           <strong>
             Satellite Image
           </strong>
-
-          <span>
-            Historical 38-Cloud test sample
-          </span>
 
         </div>
 
@@ -739,10 +673,6 @@
             MATLAB U-Net
           </strong>
 
-          <span>
-            Trained cloud segmentation network
-          </span>
-
         </div>
 
 
@@ -757,30 +687,208 @@
             Predicted Cloud Mask
           </strong>
 
-          <span>
-            Pixel-level cloud classification
-          </span>
-
         </div>
 
       </div>
 
 
-      <div class="matlab-image-grid">
+      <!-- TEST PATCH INFORMATION -->
+
+      <div class="matlab-demo-metrics">
+
+        <article class="metric-card">
+
+          <span class="metric-label">
+            Test Patch
+          </span>
+
+          <strong id="matlabPatchNumber">
+            666
+          </strong>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <span class="metric-label">
+            Accuracy
+          </span>
+
+          <strong id="matlabAccuracy">
+            82.88%
+          </strong>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <span class="metric-label">
+            Cloud IoU
+          </span>
+
+          <strong id="matlabIoU">
+            66.92%
+          </strong>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <span class="metric-label">
+            Cloud Coverage
+          </span>
+
+          <strong id="matlabCoverage">
+            34.64%
+          </strong>
+
+        </article>
+
+      </div>
+
+
+      <!-- CLOUD CONDITION -->
+
+      <div
+        id="matlabConditionCard"
+        class="condition-card fair matlab-condition"
+      >
+
+        <span class="condition-label">
+          Cloud Condition
+        </span>
+
+        <h3 id="matlabCondition">
+          FAIR
+        </h3>
+
+        <p id="matlabConditionNote">
+          Moderate cloud coverage. Weather measurements are
+          needed to assess possible signal loss.
+        </p>
+
+      </div>
+
+
+      <!-- =================================================
+           FOUR MATLAB OUTPUT IMAGES
+      ================================================== -->
+
+      <div class="matlab-output-grid">
+
+
+        <!-- 1. SATELLITE IMAGE -->
 
         <figure>
 
-          <div class="matlab-image-frame">
+          <div class="matlab-output-frame">
 
             <img
-              src="images/latest_model_comparison.png"
-              alt="MATLAB U-Net cloud segmentation comparison"
+              id="matlabSatelliteImage"
+              src="images/satellite_666.png"
+              alt="Satellite image RGB preview for MATLAB test patch 666"
             >
 
           </div>
 
           <figcaption>
-            MATLAB Historical Test Comparison
+            <strong>
+              Satellite Image
+            </strong>
+
+            <span>
+              RGB Preview
+            </span>
+          </figcaption>
+
+        </figure>
+
+
+        <!-- 2. ACTUAL CLOUDS -->
+
+        <figure>
+
+          <div class="matlab-output-frame">
+
+            <img
+              id="matlabActualMask"
+              src="images/actual_666.png"
+              alt="Actual cloud mask for MATLAB test patch 666"
+            >
+
+          </div>
+
+          <figcaption>
+
+            <strong>
+              Actual Clouds
+            </strong>
+
+            <span id="matlabActualCoverage">
+              51.74% coverage
+            </span>
+
+          </figcaption>
+
+        </figure>
+
+
+        <!-- 3. PREDICTED CLOUDS -->
+
+        <figure>
+
+          <div class="matlab-output-frame">
+
+            <img
+              id="matlabPredictedMask"
+              src="images/predicted_666.png"
+              alt="Predicted cloud mask for MATLAB test patch 666"
+            >
+
+          </div>
+
+          <figcaption>
+
+            <strong>
+              Predicted Clouds
+            </strong>
+
+            <span id="matlabPredictedCoverage">
+              34.64% coverage
+            </span>
+
+          </figcaption>
+
+        </figure>
+
+
+        <!-- 4. PREDICTION OVERLAY -->
+
+        <figure>
+
+          <div class="matlab-output-frame">
+
+            <img
+              id="matlabOverlayImage"
+              src="images/overlay_666.png"
+              alt="Predicted clouds highlighted on satellite image for MATLAB test patch 666"
+            >
+
+          </div>
+
+          <figcaption>
+
+            <strong>
+              Predicted Clouds Highlighted
+            </strong>
+
+            <span>
+              MATLAB U-Net prediction overlay
+            </span>
+
           </figcaption>
 
         </figure>
@@ -788,278 +896,13 @@
       </div>
 
 
-      <div class="source-note">
-
-        <strong>
-          Displayed MATLAB Output
-        </strong>
-
-        <p>
-          The comparison image above is a saved output from
-          the MATLAB cloud-segmentation workflow. It represents
-          historical 38-Cloud test data and should not be
-          interpreted as segmentation of the live Himawari
-          B07 image shown in Stage 3.
-        </p>
-
-      </div>
-
-
-
-      <!-- MODEL COMPARISON -->
-
-      <div class="matlab-summary-card">
-
-        <span class="matlab-small-label">
-          MODEL EVALUATION
-        </span>
-
-        <h3>
-          Baseline and Experiment 2 Results
-        </h3>
-
-        <p>
-          The two evaluations are presented separately because
-          they were performed on different test-set sizes.
-          Experiment 2 is the newer evaluation, but it does not
-          outperform the baseline on every segmentation metric.
-        </p>
-
-      </div>
-
-
-      <div class="model-comparison-grid">
-
-
-        <!-- BASELINE -->
-
-        <article class="model-result-card">
-
-          <span class="model-tag">
-            BASELINE
-          </span>
-
-          <h3>
-            Baseline U-Net
-          </h3>
-
-          <p class="test-count">
-            160 test images
-          </p>
-
-
-          <div class="metric-grid">
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Pixel Accuracy
-              </span>
-
-              <strong>
-                81.88%
-              </strong>
-
-            </article>
-
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Cloud IoU
-              </span>
-
-              <strong>
-                71.25%
-              </strong>
-
-            </article>
-
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Cloud Dice
-              </span>
-
-              <strong>
-                83.21%
-              </strong>
-
-            </article>
-
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Precision
-              </span>
-
-              <strong>
-                78.82%
-              </strong>
-
-            </article>
-
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Recall
-              </span>
-
-              <strong>
-                88.11%
-              </strong>
-
-            </article>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- EXPERIMENT 2 -->
-
-        <article class="model-result-card emphasized">
-
-          <span class="model-tag">
-            EXPERIMENT 2
-          </span>
-
-          <h3>
-            Experiment 2 U-Net
-          </h3>
-
-          <p class="test-count">
-            800 test images
-          </p>
-
-
-          <div class="metric-grid">
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Pixel Accuracy
-              </span>
-
-              <strong>
-                87.19%
-              </strong>
-
-            </article>
-
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Cloud IoU
-              </span>
-
-              <strong>
-                65.47%
-              </strong>
-
-            </article>
-
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Cloud Dice
-              </span>
-
-              <strong>
-                79.13%
-              </strong>
-
-            </article>
-
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Precision
-              </span>
-
-              <strong>
-                82.54%
-              </strong>
-
-            </article>
-
-
-            <article class="metric-card">
-
-              <span class="metric-label">
-                Recall
-              </span>
-
-              <strong>
-                75.99%
-              </strong>
-
-            </article>
-
-          </div>
-
-
-          <div class="coverage-summary">
-
-            <p>
-              <strong>
-                Actual mean cloud coverage:
-              </strong>
-              31.96%
-            </p>
-
-            <p>
-              <strong>
-                Predicted mean cloud coverage:
-              </strong>
-              29.43%
-            </p>
-
-          </div>
-
-        </article>
-
-      </div>
-
-
-      <div class="important-note">
-
-        <strong>
-          Result Interpretation
-        </strong>
-
-        <p>
-          Experiment 2 achieved higher overall pixel accuracy
-          and precision, while the baseline evaluation produced
-          higher Cloud IoU, Dice, and recall. Therefore,
-          Experiment 2 should not be described as universally
-          superior based on a single metric.
-        </p>
-
-      </div>
-
-
-      <div class="important-note">
-
-        <strong>
-          Live Himawari Limitation
-        </strong>
-
-        <p>
-          The live Himawari B07 image is not segmented by the
-          existing U-Net. A future extension requires a suitable
-          Himawari dataset, reference masks, preprocessing, and
-          model training or domain adaptation.
-        </p>
-
-      </div>
+      <!-- SMALL NOTE ONLY -->
+
+      <p class="matlab-demo-note">
+        Illustrative cloud-condition indicator based on
+        predicted cloud coverage. Actual signal strength and
+        link availability are not estimated in this stage.
+      </p>
 
 
       <div class="navigation-actions">
@@ -1085,9 +928,8 @@
     </section>
 
 
-
     <!-- =====================================================
-         STEP 5 — LINK ASSESSMENT
+         STAGE 5 — LINK ASSESSMENT
     ====================================================== -->
 
     <section
@@ -1098,7 +940,9 @@
 
       <div class="section-heading">
 
-        <span class="section-number">05</span>
+        <span class="section-number">
+          05
+        </span>
 
         <div>
 
@@ -1117,9 +961,7 @@
 
       <p class="section-description">
         Estimate the specific attenuation associated with the
-        current rain rate using the ITU-R P.838-3 rain-specific
-        attenuation model. The result provides a propagation
-        impact estimate for C-band or Ku-band operation.
+        current rain rate for C-band or Ku-band operation.
       </p>
 
 
@@ -1135,6 +977,8 @@
 
       </div>
 
+
+      <!-- WEATHER VALUES CARRIED FROM STAGE 2 -->
 
       <div class="metric-grid">
 
@@ -1174,8 +1018,9 @@
       </div>
 
 
-
-      <!-- LINK INPUTS -->
+      <!-- =================================================
+           LINK INPUTS
+      ================================================== -->
 
       <div class="matlab-summary-card">
 
@@ -1189,6 +1034,9 @@
 
 
         <div class="form-grid link-form">
+
+
+          <!-- FREQUENCY BAND -->
 
           <div class="form-field">
 
@@ -1215,6 +1063,8 @@
           </div>
 
 
+          <!-- FREQUENCY -->
+
           <div class="form-field">
 
             <label for="frequency">
@@ -1232,6 +1082,8 @@
 
           </div>
 
+
+          <!-- POLARIZATION -->
 
           <div class="form-field">
 
@@ -1258,6 +1110,8 @@
           </div>
 
 
+          <!-- ELEVATION ANGLE -->
+
           <div class="form-field">
 
             <label for="elevationAngle">
@@ -1279,6 +1133,8 @@
 
           </div>
 
+
+          <!-- RAIN RATE -->
 
           <div class="form-field full-width">
 
@@ -1316,8 +1172,9 @@
       </div>
 
 
-
-      <!-- RESULT -->
+      <!-- =================================================
+           RESULT
+      ================================================== -->
 
       <div
         id="linkResultPanel"
@@ -1338,6 +1195,7 @@
 
 
         <div class="metric-grid">
+
 
           <article class="metric-card">
 
@@ -1417,67 +1275,6 @@
       </div>
 
 
-
-      <!-- FORMULA -->
-
-      <div class="source-note">
-
-        <strong>
-          ITU-R P.838-3 Calculation
-        </strong>
-
-        <p>
-          The prototype calculates rain-specific attenuation
-          using γR = kR<sup>α</sup>, where R is rain rate in
-          mm/h and γR is expressed in dB/km. The coefficients
-          k and α depend on frequency, polarization, and
-          propagation geometry.
-        </p>
-
-      </div>
-
-
-
-      <!-- LIMITATION -->
-
-      <div class="important-note">
-
-        <strong>
-          Important Interpretation
-        </strong>
-
-        <p>
-          This stage reports current rain-specific attenuation.
-          It does not claim that the value is a complete
-          satellite-link fade or a long-term availability
-          percentage.
-        </p>
-
-        <p>
-          A complete Earth-space link assessment following
-          ITU-R P.618 requires additional propagation geometry,
-          rainfall statistics, rain height, effective path
-          calculations, and other link parameters.
-        </p>
-
-      </div>
-
-
-      <div class="important-note">
-
-        <strong>
-          Prototype Impact Categories
-        </strong>
-
-        <p>
-          The displayed Minimal, Low, Moderate, High, and
-          Severe labels are prototype interpretation categories.
-          They are not ITU-R-defined reliability thresholds.
-        </p>
-
-      </div>
-
-
       <div class="navigation-actions">
 
         <button
@@ -1504,7 +1301,6 @@
   </main>
 
 
-
   <!-- =====================================================
        FOOTER
   ====================================================== -->
@@ -1523,8 +1319,16 @@
   </footer>
 
 
+  <!-- =====================================================
+       JAVASCRIPT
 
+       demo-results.js MUST load before script.js because
+       Stage 4 reads the MATLAB exported result data.
+  ====================================================== -->
+
+  <script src="demo-results.js"></script>
   <script src="script.js"></script>
 
 </body>
+
 </html>
