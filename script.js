@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("toWeatherButton");
 
 
+  /* WEATHER */
+
   const weatherLocation =
     document.getElementById("weatherLocation");
 
@@ -53,11 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("weatherCondition");
 
   const weatherConditionDescription =
-    document.getElementById("weatherConditionDescription");
+    document.getElementById(
+      "weatherConditionDescription"
+    );
 
   const toSatelliteButton =
     document.getElementById("toSatelliteButton");
 
+
+  /* SATELLITE */
 
   const satelliteLocation =
     document.getElementById("satelliteLocation");
@@ -69,28 +75,84 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("satelliteStatus");
 
   const satelliteObservationTime =
-    document.getElementById("satelliteObservationTime");
+    document.getElementById(
+      "satelliteObservationTime"
+    );
 
   const himawariImage =
     document.getElementById("himawariImage");
 
   const satellitePlaceholder =
-    document.getElementById("satellitePlaceholder");
+    document.getElementById(
+      "satellitePlaceholder"
+    );
 
   const toMatlabButton =
     document.getElementById("toMatlabButton");
 
 
+  /* MATLAB */
+
+  const matlabPatchNumber =
+    document.getElementById("matlabPatchNumber");
+
+  const matlabAccuracy =
+    document.getElementById("matlabAccuracy");
+
+  const matlabIoU =
+    document.getElementById("matlabIoU");
+
+  const matlabCoverage =
+    document.getElementById("matlabCoverage");
+
+  const matlabConditionCard =
+    document.getElementById(
+      "matlabConditionCard"
+    );
+
+  const matlabCondition =
+    document.getElementById("matlabCondition");
+
+  const matlabConditionNote =
+    document.getElementById(
+      "matlabConditionNote"
+    );
+
+  const matlabSatelliteImage =
+    document.getElementById(
+      "matlabSatelliteImage"
+    );
+
+  const matlabActualMask =
+    document.getElementById(
+      "matlabActualMask"
+    );
+
+  const matlabPredictedMask =
+    document.getElementById(
+      "matlabPredictedMask"
+    );
+
+  const matlabOverlayImage =
+    document.getElementById(
+      "matlabOverlayImage"
+    );
+
+  const matlabActualCoverage =
+    document.getElementById(
+      "matlabActualCoverage"
+    );
+
+  const matlabPredictedCoverage =
+    document.getElementById(
+      "matlabPredictedCoverage"
+    );
+
   const toLinkButton =
     document.getElementById("toLinkButton");
 
-  const restartButton =
-    document.getElementById("restartButton");
 
-
-  /* =========================================================
-     STAGE 5 ELEMENTS
-  ========================================================= */
+  /* LINK ASSESSMENT */
 
   const linkLocation =
     document.getElementById("linkLocation");
@@ -117,25 +179,38 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("rainRate");
 
   const calculateAttenuationButton =
-    document.getElementById("calculateAttenuationButton");
+    document.getElementById(
+      "calculateAttenuationButton"
+    );
 
   const specificAttenuation =
-    document.getElementById("specificAttenuation");
+    document.getElementById(
+      "specificAttenuation"
+    );
 
   const coefficientK =
     document.getElementById("coefficientK");
 
   const coefficientAlpha =
-    document.getElementById("coefficientAlpha");
+    document.getElementById(
+      "coefficientAlpha"
+    );
 
   const linkImpact =
     document.getElementById("linkImpact");
 
   const linkImpactBadge =
-    document.getElementById("linkImpactBadge");
+    document.getElementById(
+      "linkImpactBadge"
+    );
 
   const linkResultExplanation =
-    document.getElementById("linkResultExplanation");
+    document.getElementById(
+      "linkResultExplanation"
+    );
+
+  const restartButton =
+    document.getElementById("restartButton");
 
 
   /* =========================================================
@@ -160,10 +235,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================================= */
 
   let selectedLocation = null;
-
   let currentWeather = null;
 
   let satelliteLoaded = false;
+  let satelliteLoading = false;
 
   const cache = new Map();
 
@@ -174,7 +249,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function optionName(select) {
 
-    if (!select || !select.value) {
+    if (
+      !select ||
+      !select.value
+    ) {
       return "";
     }
 
@@ -275,7 +353,6 @@ document.addEventListener("DOMContentLoaded", () => {
   async function getPSGC(path) {
 
     if (cache.has(path)) {
-
       return cache.get(path);
     }
 
@@ -321,7 +398,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function fullLocationName() {
 
     if (!selectedLocation) {
-
       return "Selected location";
     }
 
@@ -375,6 +451,40 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       });
 
+
+    /*
+      STAGE 3:
+      Automatically load the latest
+      Himawari B07 image when Stage 3 opens.
+    */
+
+    if (
+      number === 3 &&
+      selectedLocation &&
+      !satelliteLoaded &&
+      !satelliteLoading
+    ) {
+
+      loadHimawari();
+    }
+
+
+    /*
+      STAGE 4:
+      Load MATLAB test-patch result.
+    */
+
+    if (number === 4) {
+
+      loadMatlabDemo(666);
+    }
+
+
+    /*
+      STAGE 5:
+      Copy current weather into
+      the link assessment.
+    */
 
     if (number === 5) {
 
@@ -469,7 +579,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function clearLocationConfirmation() {
 
     selectedLocation = null;
-
     currentWeather = null;
 
     selectedLocationLabel.textContent =
@@ -478,17 +587,17 @@ document.addEventListener("DOMContentLoaded", () => {
     locationCoordinates.textContent =
       "Coordinates will appear after confirmation.";
 
-    toWeatherButton.disabled =
-      true;
+    toWeatherButton.disabled = true;
 
-    satelliteLoaded =
-      false;
+    satelliteLoaded = false;
+    satelliteLoading = false;
 
-    himawariImage.hidden =
-      true;
+    himawariImage.hidden = true;
 
-    satellitePlaceholder.hidden =
-      false;
+    satellitePlaceholder.hidden = false;
+
+    satellitePlaceholder.textContent =
+      "Satellite imagery will load automatically when Stage 3 is opened.";
 
     satelliteStatus.textContent =
       "Satellite imagery has not been loaded.";
@@ -556,6 +665,11 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
+        /*
+          Some Philippine regions do not
+          have a province layer.
+        */
+
         if (provinces.length > 0) {
 
           populateSelect(
@@ -587,7 +701,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "Provinces could not load: " +
           error.message;
       }
-
 
       updateConfirmButton();
     }
@@ -669,7 +782,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "Municipalities could not load: " +
           error.message;
       }
-
 
       updateConfirmButton();
     }
@@ -759,7 +871,6 @@ document.addEventListener("DOMContentLoaded", () => {
               properties.countrycode || ""
             ).toUpperCase() !== "PH"
           ) {
-
             return false;
           }
 
@@ -768,18 +879,14 @@ document.addEventListener("DOMContentLoaded", () => {
             feature.geometry?.type !==
             "Point"
           ) {
-
             return false;
           }
 
 
           if (
-            !Array.isArray(
-              coordinates
-            ) ||
+            !Array.isArray(coordinates) ||
             coordinates.length < 2
           ) {
-
             return false;
           }
 
@@ -792,7 +899,6 @@ document.addEventListener("DOMContentLoaded", () => {
               coordinates[1]
             )
           ) {
-
             return false;
           }
 
@@ -816,7 +922,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const properties =
             feature.properties || {};
-
 
           return (
             normalize(
@@ -842,7 +947,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (
         confirmLocationButton.disabled
       ) {
-
         return;
       }
 
@@ -966,43 +1070,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function clearWeather() {
 
-    currentWeather =
-      null;
-
+    currentWeather = null;
 
     precipitationValue.textContent =
       "—";
 
-
     cloudCoverValue.textContent =
       "—";
-
 
     weatherTimeValue.textContent =
       "—";
 
-
     weatherCondition.textContent =
       "Waiting for weather data";
-
 
     weatherConditionDescription.textContent =
       "Weather information will appear after the selected location is processed.";
 
-
     weatherConditionCard.classList.remove(
       "good",
       "fair",
-      "warning"
+      "warning",
+      "severe"
     );
 
-
     weatherMessage.textContent =
-      "Weather has not been loaded.";
-
-
-    toSatelliteButton.disabled =
-      true;
+      "Waiting for weather request.";
   }
 
 
@@ -1014,20 +1107,53 @@ document.addEventListener("DOMContentLoaded", () => {
     weatherConditionCard.classList.remove(
       "good",
       "fair",
-      "warning"
+      "warning",
+      "severe"
     );
+
+
+    if (precipitation >= 7.5) {
+
+      weatherCondition.textContent =
+        "Heavy Rain";
+
+      weatherConditionDescription.textContent =
+        "Heavy modeled precipitation is present at the selected location.";
+
+      weatherConditionCard.classList.add(
+        "severe"
+      );
+
+      return;
+    }
+
+
+    if (precipitation >= 2.5) {
+
+      weatherCondition.textContent =
+        "Moderate Rain";
+
+      weatherConditionDescription.textContent =
+        "Moderate modeled precipitation is present at the selected location.";
+
+      weatherConditionCard.classList.add(
+        "warning"
+      );
+
+      return;
+    }
 
 
     if (precipitation > 0) {
 
       weatherCondition.textContent =
-        "Precipitation Detected";
+        "Light Rain";
 
       weatherConditionDescription.textContent =
-        "Current modeled precipitation is present at the selected location.";
+        "Light modeled precipitation is present at the selected location.";
 
       weatherConditionCard.classList.add(
-        "warning"
+        "fair"
       );
 
       return;
@@ -1099,14 +1225,11 @@ document.addEventListener("DOMContentLoaded", () => {
     precipitationValue.textContent =
       "Loading...";
 
-
     cloudCoverValue.textContent =
       "Loading...";
 
-
     weatherTimeValue.textContent =
       "Loading...";
-
 
     weatherMessage.textContent =
       "Retrieving current weather...";
@@ -1151,7 +1274,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const current =
         weather.current;
-
 
       const units =
         weather.current_units;
@@ -1224,7 +1346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       weatherMessage.textContent =
-        "Current modeled weather loaded successfully. Source: Open-Meteo.";
+        "Current weather loaded successfully.";
 
 
       toSatelliteButton.disabled =
@@ -1235,7 +1357,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       clearWeather();
 
-
       weatherMessage.textContent =
         "Weather could not load: " +
         error.message;
@@ -1244,13 +1365,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     JMA HIMAWARI — SOUTHEAST ASIA 2
-     B07 SHORT WAVE INFRARED
+     STAGE 3
+     JMA HIMAWARI B07
   ========================================================= */
 
-  function roundToTenMinutes(
-    date
-  ) {
+  function roundToTenMinutes(date) {
 
     const result =
       new Date(
@@ -1286,34 +1405,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function formatSatelliteTime(
-    date
-  ) {
+  function formatSatelliteTime(date) {
 
     const utc =
       new Intl.DateTimeFormat(
         "en-PH",
         {
-          timeZone:
-            "UTC",
-
-          year:
-            "numeric",
-
-          month:
-            "short",
-
-          day:
-            "2-digit",
-
-          hour:
-            "2-digit",
-
-          minute:
-            "2-digit",
-
-          hour12:
-            false
+          timeZone: "UTC",
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false
         }
       ).format(date);
 
@@ -1325,23 +1429,12 @@ document.addEventListener("DOMContentLoaded", () => {
           timeZone:
             "Asia/Manila",
 
-          year:
-            "numeric",
-
-          month:
-            "short",
-
-          day:
-            "2-digit",
-
-          hour:
-            "2-digit",
-
-          minute:
-            "2-digit",
-
-          hour12:
-            false
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false
         }
       ).format(date);
 
@@ -1387,6 +1480,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function loadHimawari() {
 
+    if (satelliteLoading) {
+      return;
+    }
+
+
     if (!selectedLocation) {
 
       satelliteStatus.textContent =
@@ -1396,12 +1494,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    satelliteLoading = true;
+
+    satelliteLoaded = false;
+
+
     satelliteLocation.textContent =
       fullLocationName();
-
-
-    satelliteLoaded =
-      false;
 
 
     himawariImage.hidden =
@@ -1413,11 +1512,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     satellitePlaceholder.textContent =
-      "Retrieving recent JMA Himawari Southeast Asia 2 B07 imagery...";
+      "Loading latest Himawari B07 imagery...";
 
 
     satelliteStatus.textContent =
-      "Searching recent B07 image slots...";
+      "Searching recent Himawari B07 image slots...";
 
 
     satelliteObservationTime.textContent =
@@ -1433,10 +1532,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-      JMA imagery may become available after
-      the nominal observation time.
+      JMA imagery may appear several
+      minutes after the nominal slot.
 
-      Start 20 minutes behind current UTC.
+      Begin 20 minutes behind current UTC.
     */
 
     const initial =
@@ -1450,8 +1549,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
+      let found = false;
+
+
       /*
-        Search recent 10-minute image slots.
+        Search up to 18 recent
+        10-minute observation slots.
       */
 
       for (
@@ -1471,18 +1574,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const code =
-          slotCode(
-            candidate
-          );
+          slotCode(candidate);
 
-
-        /*
-          JMA Southeast Asia 2 B07
-          Short Wave Infrared.
-
-          The product filename is based on
-          the B07 image used in the prototype.
-        */
 
         const possibleNames = [
 
@@ -1497,7 +1590,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "se2_b07_" +
           code +
           ".gif"
-
         ];
 
 
@@ -1549,36 +1641,48 @@ document.addEventListener("DOMContentLoaded", () => {
               true;
 
 
-            satelliteStatus.textContent =
-              "B07 imagery available.";
-
-
             satelliteObservationTime.textContent =
               formatSatelliteTime(
                 candidate
               );
 
 
+            satelliteStatus.textContent =
+              "Latest available Himawari B07 imagery loaded successfully.";
+
+
             satelliteLoaded =
               true;
 
 
-            return;
+            found =
+              true;
+
+
+            break;
 
           } catch (error) {
 
             /*
-              Try the next filename or
-              previous time slot.
+              Try the next filename
+              or observation slot.
             */
           }
+        }
+
+
+        if (found) {
+          break;
         }
       }
 
 
-      throw new Error(
-        "No recent JMA B07 image could be retrieved."
-      );
+      if (!found) {
+
+        throw new Error(
+          "No recent Himawari B07 image could be loaded."
+        );
+      }
 
 
     } catch (error) {
@@ -1592,10 +1696,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       satellitePlaceholder.textContent =
-        "Recent JMA Himawari Southeast Asia 2 B07 imagery could not be retrieved.";
+        "Himawari B07 imagery is temporarily unavailable.";
 
 
       satelliteStatus.textContent =
+        "Satellite image could not load: " +
         error.message;
 
 
@@ -1603,7 +1708,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "Unavailable";
 
 
+      satelliteLoaded =
+        false;
+
+
     } finally {
+
+      satelliteLoading =
+        false;
+
 
       loadSatelliteButton.disabled =
         false;
@@ -1622,26 +1735,227 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     STAGE 5
-     CURRENT RAIN-SPECIFIC ATTENUATION
-
-     gamma_R = k * R^alpha
-
-     This prototype calculates specific attenuation
-     only. It does NOT calculate a long-term
-     satellite-link availability percentage.
+     STAGE 4
+     MATLAB U-NET RESULT
   ========================================================= */
 
+  function getCloudCondition(
+    cloudPercent
+  ) {
 
-  /*
-    Coefficients used for the supported
-    C/Ku prototype range.
+    /*
+      Simple prototype indicator based
+      on predicted cloud coverage.
+    */
 
-    Horizontal and vertical coefficient values
-    are provided at discrete frequencies.
+    if (cloudPercent < 20) {
 
-    Interpolation is performed between points.
-  */
+      return {
+        label: "GOOD",
+        className: "good",
+        note:
+          "Low cloud coverage is present. Weather measurements are still needed to assess possible signal loss."
+      };
+    }
+
+
+    if (cloudPercent < 50) {
+
+      return {
+        label: "FAIR",
+        className: "fair",
+        note:
+          "Moderate cloud coverage. Weather measurements are needed to assess possible signal loss."
+      };
+    }
+
+
+    if (cloudPercent < 75) {
+
+      return {
+        label: "CLOUDY",
+        className: "warning",
+        note:
+          "High cloud coverage is present. Weather measurements are needed to assess possible signal loss."
+      };
+    }
+
+
+    return {
+      label: "VERY CLOUDY",
+      className: "severe",
+      note:
+        "Very high cloud coverage is present. Weather measurements are needed to assess possible signal loss."
+    };
+  }
+
+
+  function loadMatlabDemo(
+    patchNumber = 666
+  ) {
+
+    const results =
+      window.demoResults;
+
+
+    /*
+      demo-results.js should contain
+      window.demoResults[patchNumber].
+    */
+
+    if (
+      !results ||
+      !results[patchNumber]
+    ) {
+
+      console.warn(
+        "MATLAB result for patch " +
+        patchNumber +
+        " is unavailable."
+      );
+
+      return;
+    }
+
+
+    const result =
+      results[patchNumber];
+
+
+    const accuracy =
+      Number(
+        result.pixelAccuracyPercent
+      );
+
+
+    const iou =
+      Number(
+        result.cloudIoUPercent
+      );
+
+
+    const predictedCoverage =
+      Number(
+        result.predictedCloudPercent
+      );
+
+
+    const actualCoverage =
+      Number(
+        result.actualCloudPercent
+      );
+
+
+    matlabPatchNumber.textContent =
+      String(patchNumber);
+
+
+    matlabAccuracy.textContent =
+      Number.isFinite(accuracy)
+        ? accuracy.toFixed(2) + "%"
+        : "—";
+
+
+    matlabIoU.textContent =
+      Number.isFinite(iou)
+        ? iou.toFixed(2) + "%"
+        : "—";
+
+
+    matlabCoverage.textContent =
+      Number.isFinite(
+        predictedCoverage
+      )
+        ? predictedCoverage.toFixed(2) +
+          "%"
+        : "—";
+
+
+    matlabActualCoverage.textContent =
+      Number.isFinite(
+        actualCoverage
+      )
+        ? actualCoverage.toFixed(2) +
+          "% coverage"
+        : "Coverage unavailable";
+
+
+    matlabPredictedCoverage.textContent =
+      Number.isFinite(
+        predictedCoverage
+      )
+        ? predictedCoverage.toFixed(2) +
+          "% coverage"
+        : "Coverage unavailable";
+
+
+    if (result.satelliteImage) {
+
+      matlabSatelliteImage.src =
+        result.satelliteImage;
+    }
+
+
+    if (result.actualMask) {
+
+      matlabActualMask.src =
+        result.actualMask;
+    }
+
+
+    if (result.predictedMask) {
+
+      matlabPredictedMask.src =
+        result.predictedMask;
+    }
+
+
+    if (result.overlayImage) {
+
+      matlabOverlayImage.src =
+        result.overlayImage;
+    }
+
+
+    if (
+      Number.isFinite(
+        predictedCoverage
+      )
+    ) {
+
+      const condition =
+        getCloudCondition(
+          predictedCoverage
+        );
+
+
+      matlabCondition.textContent =
+        condition.label;
+
+
+      matlabConditionNote.textContent =
+        condition.note;
+
+
+      matlabConditionCard.classList.remove(
+        "good",
+        "fair",
+        "warning",
+        "severe"
+      );
+
+
+      matlabConditionCard.classList.add(
+        condition.className
+      );
+    }
+  }
+
+
+  /* =========================================================
+     STAGE 5
+     RAIN-SPECIFIC ATTENUATION
+  ========================================================= */
 
   const coefficientTable = [
 
@@ -1724,7 +2038,6 @@ document.addEventListener("DOMContentLoaded", () => {
       kV: 0.09611,
       aV: 0.9847
     }
-
   ];
 
 
@@ -1806,10 +2119,6 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
-        /*
-          k is interpolated logarithmically.
-        */
-
         if (
           property === "kH" ||
           property === "kV"
@@ -1838,11 +2147,6 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         }
 
-
-        /*
-          alpha is interpolated between
-          adjacent values.
-        */
 
         return (
           lower[property] +
@@ -1895,14 +2199,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "aV"
       );
 
-
-    /*
-      Polarization tilt angle tau:
-
-      Horizontal = 0 degrees
-      Vertical   = 90 degrees
-      Circular   = 45 degrees
-    */
 
     let tauDegrees = 0;
 
@@ -2009,68 +2305,40 @@ document.addEventListener("DOMContentLoaded", () => {
     attenuation
   ) {
 
-    /*
-      These categories are a prototype
-      interpretation only.
-
-      They are NOT ITU-R-defined
-      reliability thresholds.
-    */
-
-    if (
-      attenuation < 0.01
-    ) {
+    if (attenuation < 0.01) {
 
       return {
-
-        label:
-          "Minimal",
-
+        label: "Minimal",
         explanation:
           "The calculated rain-specific attenuation is currently very small."
       };
     }
 
 
-    if (
-      attenuation < 0.10
-    ) {
+    if (attenuation < 0.10) {
 
       return {
-
-        label:
-          "Low",
-
+        label: "Low",
         explanation:
           "The current rain rate introduces a relatively small propagation loss per kilometre."
       };
     }
 
 
-    if (
-      attenuation < 0.50
-    ) {
+    if (attenuation < 0.50) {
 
       return {
-
-        label:
-          "Moderate",
-
+        label: "Moderate",
         explanation:
-          "Rain attenuation is becoming significant and may affect a satellite link depending on the effective rain path and available link margin."
+          "Rain attenuation is becoming significant and may affect the satellite link."
       };
     }
 
 
-    if (
-      attenuation < 1.00
-    ) {
+    if (attenuation < 1.00) {
 
       return {
-
-        label:
-          "High",
-
+        label: "High",
         explanation:
           "The calculated rain-specific attenuation indicates substantial rain-related propagation loss."
       };
@@ -2078,10 +2346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     return {
-
-      label:
-        "Severe",
-
+      label: "Severe",
       explanation:
         "The selected rain rate and operating parameters produce strong rain-specific attenuation."
     };
@@ -2093,22 +2358,17 @@ document.addEventListener("DOMContentLoaded", () => {
     specificAttenuation.textContent =
       "—";
 
-
     coefficientK.textContent =
       "—";
-
 
     coefficientAlpha.textContent =
       "—";
 
-
     linkImpact.textContent =
       "—";
 
-
     linkImpactBadge.textContent =
       "Awaiting Calculation";
-
 
     linkResultExplanation.textContent =
       "Select the link parameters and calculate the current rain-specific attenuation.";
@@ -2209,6 +2469,7 @@ document.addEventListener("DOMContentLoaded", () => {
       frequencyInput.placeholder =
         "Example: 6.0";
 
+
     } else if (
       frequencyBand.value ===
       "Ku"
@@ -2241,6 +2502,7 @@ document.addEventListener("DOMContentLoaded", () => {
       frequencyInput.placeholder =
         "Example: 12.0";
 
+
     } else {
 
       frequencyInput.min =
@@ -2248,7 +2510,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       frequencyInput.max =
         "20";
-
 
       frequencyInput.value =
         "";
@@ -2466,7 +2727,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (rain === 0) {
 
           linkResultExplanation.textContent =
-            "The rain rate used in the calculation is 0.00 mm/h, so the calculated rain-specific attenuation is 0.0000 dB/km. This does not mean that the complete satellite link has zero propagation loss; it only means that this calculation contributes no rain-specific attenuation for the selected condition.";
+            "No current rain-specific attenuation is calculated because the rain rate is 0.00 mm/h.";
 
         } else {
 
@@ -2487,22 +2748,17 @@ document.addEventListener("DOMContentLoaded", () => {
         specificAttenuation.textContent =
           "—";
 
-
         coefficientK.textContent =
           "—";
-
 
         coefficientAlpha.textContent =
           "—";
 
-
         linkImpact.textContent =
           "—";
 
-
         linkImpactBadge.textContent =
           "Input Required";
-
 
         linkResultExplanation.textContent =
           error.message;
@@ -2512,7 +2768,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     INITIALIZE LOCATION LISTS
+     INITIALIZE
   ========================================================= */
 
   async function initialize() {
@@ -2538,6 +2794,8 @@ document.addEventListener("DOMContentLoaded", () => {
     clearWeather();
 
     resetLinkResult();
+
+    loadMatlabDemo(666);
 
 
     try {
