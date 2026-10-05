@@ -36,15 +36,12 @@
     0 12px 30px rgba(117, 30, 67, 0.08);
 }
 
-
 html {
   scroll-behavior: smooth;
 }
 
-
 body {
   margin: 0;
-
   min-height: 100vh;
 
   font-family:
@@ -61,10 +58,8 @@ body {
     );
 
   color: var(--text);
-
   line-height: 1.6;
 }
-
 
 button,
 input,
@@ -72,28 +67,19 @@ select {
   font: inherit;
 }
 
-
 button {
   cursor: pointer;
 }
-
 
 button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
 
-
 img {
   display: block;
   max-width: 100%;
 }
-
-
-/* =========================================================
-   VERY IMPORTANT:
-   HIDDEN STAGES MUST ACTUALLY DISAPPEAR
-========================================================= */
 
 [hidden] {
   display: none !important;
@@ -106,7 +92,6 @@ img {
 
 .site-header {
   position: relative;
-
   overflow: hidden;
 
   padding:
@@ -115,7 +100,6 @@ img {
     58px;
 
   text-align: center;
-
   color: white;
 
   background:
@@ -126,7 +110,6 @@ img {
       #bd376f 100%
     );
 }
-
 
 .site-header::before {
   content: "";
@@ -145,7 +128,6 @@ img {
     rgba(255, 255, 255, 0.07);
 }
 
-
 .site-header::after {
   content: "";
 
@@ -163,17 +145,13 @@ img {
     rgba(255, 255, 255, 0.06);
 }
 
-
 .header-content {
   position: relative;
-
   z-index: 1;
 
   max-width: 1050px;
-
   margin: auto;
 }
-
 
 .eyebrow {
   margin:
@@ -182,14 +160,10 @@ img {
     14px;
 
   font-size: 13px;
-
   font-weight: 800;
-
   letter-spacing: 2px;
-
   text-transform: uppercase;
 }
-
 
 .site-header h1 {
   margin:
@@ -206,10 +180,8 @@ img {
     );
 
   line-height: 1.12;
-
   color: white;
 }
-
 
 .header-description {
   max-width: 850px;
@@ -232,7 +204,7 @@ img {
 
 
 /* =========================================================
-   MAIN CONTAINER
+   MAIN
 ========================================================= */
 
 .prototype-container {
@@ -255,9 +227,7 @@ img {
 
 .progress-navigation {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   gap: 0;
@@ -284,12 +254,9 @@ img {
     rgba(117, 30, 67, 0.05);
 }
 
-
 .progress-item {
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   gap: 10px;
@@ -317,12 +284,9 @@ img {
     transform 0.2s ease;
 }
 
-
 .progress-item span {
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
 
   flex:
@@ -342,10 +306,8 @@ img {
     var(--pink);
 
   font-size: 13px;
-
   font-weight: 800;
 }
-
 
 .progress-item small {
   display: block;
@@ -353,10 +315,8 @@ img {
   white-space: nowrap;
 
   font-size: 13px;
-
   font-weight: 700;
 }
-
 
 .progress-item.active {
   color: white;
@@ -373,14 +333,10 @@ img {
     rgba(143, 36, 81, 0.18);
 }
 
-
 .progress-item.active span {
   background: white;
-
-  color:
-    var(--wine);
+  color: var(--wine);
 }
-
 
 .progress-line {
   flex:
@@ -421,7 +377,6 @@ img {
     var(--shadow);
 }
 
-
 .prototype-step {
   scroll-margin-top: 25px;
 }
@@ -433,7 +388,6 @@ img {
 
 .section-heading {
   display: flex;
-
   align-items: center;
 
   gap: 18px;
@@ -441,12 +395,9 @@ img {
   margin-bottom: 12px;
 }
 
-
 .section-number {
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   flex:
@@ -475,7 +426,6 @@ img {
   font-weight: 800;
 }
 
-
 .section-label {
   margin:
     0
@@ -486,14 +436,10 @@ img {
     var(--pink);
 
   font-size: 12px;
-
   font-weight: 800;
-
   letter-spacing: 1px;
-
   text-transform: uppercase;
 }
-
 
 .section-heading h2 {
   margin: 0;
@@ -510,7 +456,6 @@ img {
 
   line-height: 1.2;
 }
-
 
 .section-description {
   margin:
@@ -545,31 +490,25 @@ img {
     0;
 }
 
-
 .form-field {
   display: flex;
-
   flex-direction: column;
 
   gap: 7px;
 }
-
 
 .form-field.full-width {
   grid-column:
     1 / -1;
 }
 
-
 .form-field label {
   color:
     var(--text);
 
   font-size: 13px;
-
   font-weight: 800;
 }
-
 
 .form-field small {
   color:
@@ -577,7 +516,6 @@ img {
 
   font-size: 12px;
 }
-
 
 select,
 input {
@@ -609,7 +547,6 @@ input {
     box-shadow 0.2s ease;
 }
 
-
 select:focus,
 input:focus {
   border-color:
@@ -619,7 +556,6 @@ input:focus {
     0 0 0 3px
     rgba(179, 40, 99, 0.09);
 }
-
 
 select:disabled,
 input:disabled {
@@ -653,7 +589,6 @@ input:disabled {
     background 0.15s ease;
 }
 
-
 .primary-button {
   border:
     1px
@@ -674,7 +609,6 @@ input:disabled {
     rgba(143, 36, 81, 0.14);
 }
 
-
 .primary-button:hover:not(:disabled) {
   transform:
     translateY(-1px);
@@ -683,7 +617,6 @@ input:disabled {
     0 8px 18px
     rgba(143, 36, 81, 0.2);
 }
-
 
 .secondary-button {
   border:
@@ -696,7 +629,6 @@ input:disabled {
 
   background: white;
 }
-
 
 .secondary-button:hover:not(:disabled) {
   background:
@@ -768,20 +700,15 @@ input:disabled {
     #fff9fb;
 }
 
-
 .location-banner span {
   color:
     var(--pink);
 
   font-size: 11px;
-
   font-weight: 800;
-
   letter-spacing: 1px;
-
   text-transform: uppercase;
 }
-
 
 .location-banner strong {
   justify-self: end;
@@ -793,7 +720,6 @@ input:disabled {
 
   text-align: right;
 }
-
 
 .location-banner small {
   grid-column:
@@ -807,7 +733,7 @@ input:disabled {
 
 
 /* =========================================================
-   METRIC CARDS
+   METRICS
 ========================================================= */
 
 .metric-grid {
@@ -815,52 +741,47 @@ input:disabled {
 
   grid-template-columns:
     repeat(
-      auto-fit,
-      minmax(
-        180px,
-        1fr
-      )
+      3,
+      minmax(0, 1fr)
     );
 
   gap: 15px;
 
   margin:
-    20px
+    22px
     0;
 }
-
 
 .metric-card {
   min-width: 0;
 
   padding:
-    20px;
+    18px;
 
   border:
     1px
     solid
     var(--border);
 
-  border-radius: 13px;
+  border-radius: 12px;
 
   background:
     #fffafb;
 }
 
-
 .metric-label {
   display: block;
 
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 
   color:
-    #774157;
+    var(--pink);
 
-  font-size: 12px;
-
+  font-size: 10px;
   font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
-
 
 .metric-card strong {
   display: block;
@@ -868,28 +789,19 @@ input:disabled {
   color:
     var(--text);
 
-  font-size:
-    clamp(
-      21px,
-      2vw,
-      28px
-    );
-
+  font-size: 23px;
   line-height: 1.25;
-
-  overflow-wrap: anywhere;
 }
-
 
 .metric-card small {
   display: block;
 
-  margin-top: 9px;
+  margin-top: 5px;
 
   color:
     var(--text-soft);
 
-  font-size: 12px;
+  font-size: 11px;
 }
 
 
@@ -899,11 +811,11 @@ input:disabled {
 
 .condition-card {
   margin:
-    20px
+    22px
     0;
 
   padding:
-    20px;
+    22px;
 
   border:
     1px
@@ -911,7 +823,7 @@ input:disabled {
     var(--border);
 
   border-left:
-    4px
+    5px
     solid
     var(--pink);
 
@@ -921,30 +833,38 @@ input:disabled {
     var(--soft-pink);
 }
 
-
 .condition-label {
   color:
     var(--pink);
 
   font-size: 11px;
-
   font-weight: 800;
-
   letter-spacing: 1px;
-
   text-transform: uppercase;
 }
 
-
+/*
+   Current weather condition such as CLOUDY
+   is intentionally larger.
+*/
 .condition-card h3 {
   margin:
-    6px
-    0;
+    7px
+    0
+    5px;
 
   color:
     var(--text);
-}
 
+  font-size:
+    clamp(
+      29px,
+      4vw,
+      38px
+    );
+
+  line-height: 1.15;
+}
 
 .condition-card p {
   margin: 0;
@@ -952,7 +872,6 @@ input:disabled {
   color:
     var(--text-soft);
 }
-
 
 .condition-card.good {
   border-left-color:
@@ -962,7 +881,6 @@ input:disabled {
     var(--success-bg);
 }
 
-
 .condition-card.fair {
   border-left-color:
     #d7a02b;
@@ -971,85 +889,20 @@ input:disabled {
     #fffaf0;
 }
 
-
 .condition-card.warning {
   border-left-color:
-    #cf754b;
-
-  background:
-    #fff6f1;
-}
-
-
-/* =========================================================
-   INFORMATION BOXES
-========================================================= */
-
-.source-note,
-.important-note {
-  margin:
-    22px
-    0;
-
-  padding:
-    18px
-    20px;
-
-  border-radius: 12px;
-}
-
-
-.source-note {
-  border-left:
-    4px
-    solid
-    #c33c77;
-
-  background:
-    #fff7fa;
-}
-
-
-.important-note {
-  border:
-    1px
-    solid
-    var(--warning-border);
+    #d58c27;
 
   background:
     var(--warning-bg);
-
-  color:
-    var(--warning-text);
 }
 
+.condition-card.severe {
+  border-left-color:
+    #b94747;
 
-.source-note strong,
-.important-note strong {
-  display: block;
-
-  margin-bottom: 7px;
-
-  color:
-    var(--text);
-
-  font-size: 14px;
-}
-
-
-.important-note strong {
-  color:
-    var(--warning-text);
-}
-
-
-.source-note p,
-.important-note p {
-  margin:
-    6px
-    0;
-
-  font-size: 14px;
+  background:
+    #fff4f4;
 }
 
 
@@ -1059,9 +912,7 @@ input:disabled {
 
 .navigation-actions {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   gap: 15px;
@@ -1078,42 +929,25 @@ input:disabled {
 
 
 /* =========================================================
-   SATELLITE
+   STAGE 3 — SATELLITE
 ========================================================= */
-
-.satellite-toolbar {
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  margin:
-    16px
-    0;
-}
-
 
 .satellite-layout {
   width: 100%;
 
   margin:
-    18px
+    24px
     0
-    24px;
+    16px;
 }
-
 
 .satellite-figure {
   margin: 0;
 }
 
-
 .satellite-image-frame {
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   width: 100%;
@@ -1133,12 +967,10 @@ input:disabled {
     #171116;
 }
 
-
 .satellite-image-frame img {
   width: auto;
 
   max-width: 100%;
-
   max-height: 650px;
 
   object-fit: contain;
@@ -1146,12 +978,9 @@ input:disabled {
   margin: auto;
 }
 
-
 .image-placeholder {
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   width: 100%;
@@ -1174,7 +1003,6 @@ input:disabled {
     var(--border-dark);
 }
 
-
 .satellite-figure figcaption {
   padding-top: 10px;
 
@@ -1184,13 +1012,286 @@ input:disabled {
   text-align: center;
 
   font-size: 13px;
-
   font-weight: 700;
+}
+
+/*
+   Manual refresh is intentionally below the image.
+*/
+.satellite-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin:
+    18px
+    0
+    10px;
+}
+
+.satellite-toolbar .primary-button {
+  min-width: 250px;
 }
 
 
 /* =========================================================
-   MATLAB
+   STAGE 4 — MATLAB WORKFLOW
+========================================================= */
+
+.matlab-flow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  margin:
+    30px
+    0;
+
+  flex-wrap: wrap;
+}
+
+.flow-box {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 210px;
+  min-height: 82px;
+
+  padding:
+    14px
+    18px;
+
+  border:
+    1px
+    solid
+    var(--border);
+
+  border-radius: 10px;
+
+  background:
+    #fffafb;
+
+  text-align: center;
+}
+
+.flow-box strong {
+  color:
+    var(--text);
+}
+
+.flow-box.highlight {
+  color: white;
+
+  border-color:
+    var(--wine);
+
+  background:
+    linear-gradient(
+      135deg,
+      #852249,
+      #a8295c
+    );
+}
+
+.flow-box.highlight strong {
+  color: white;
+}
+
+.flow-arrow {
+  color:
+    var(--pink);
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   STAGE 4 — MATLAB TEST PATCH METRICS
+========================================================= */
+
+.matlab-demo-metrics {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+
+  margin:
+    28px
+    0
+    18px;
+}
+
+.matlab-demo-metrics .metric-card {
+  text-align: center;
+}
+
+.matlab-demo-metrics .metric-card strong {
+  font-size: 27px;
+}
+
+
+/* =========================================================
+   STAGE 4 — CLOUD CONDITION
+========================================================= */
+
+.matlab-condition {
+  margin:
+    0
+    0
+    26px;
+
+  text-align: left;
+}
+
+.matlab-condition h3 {
+  font-size:
+    clamp(
+      30px,
+      4vw,
+      40px
+    );
+}
+
+
+/* =========================================================
+   STAGE 4 — FOUR MATLAB IMAGES
+========================================================= */
+
+.matlab-output-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 22px;
+
+  margin:
+    26px
+    0
+    18px;
+}
+
+.matlab-output-grid figure {
+  margin: 0;
+
+  padding:
+    14px;
+
+  border:
+    1px
+    solid
+    var(--border);
+
+  border-radius: 14px;
+
+  background:
+    #fffafb;
+}
+
+.matlab-output-frame {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  aspect-ratio:
+    1 / 1;
+
+  border:
+    1px
+    solid
+    #34262e;
+
+  border-radius: 11px;
+
+  background:
+    #111111;
+}
+
+.matlab-output-frame img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.matlab-output-grid figcaption {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 2px;
+
+  margin-top: 11px;
+
+  color:
+    var(--text);
+
+  text-align: center;
+}
+
+.matlab-output-grid figcaption strong {
+  font-size: 14px;
+}
+
+.matlab-output-grid figcaption span {
+  color:
+    var(--text-soft);
+
+  font-size: 12px;
+}
+
+.matlab-demo-note {
+  margin:
+    18px
+    0
+    0;
+
+  padding:
+    12px
+    15px;
+
+  border-left:
+    3px
+    solid
+    var(--border-dark);
+
+  color:
+    var(--text-soft);
+
+  background:
+    #fffafb;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   GENERIC MATLAB / LINK CARD
 ========================================================= */
 
 .matlab-summary-card {
@@ -1212,7 +1313,6 @@ input:disabled {
     #fffafb;
 }
 
-
 .matlab-small-label {
   display: block;
 
@@ -1222,12 +1322,9 @@ input:disabled {
     var(--pink);
 
   font-size: 11px;
-
   font-weight: 800;
-
   letter-spacing: 1px;
 }
-
 
 .matlab-summary-card h3 {
   margin:
@@ -1239,7 +1336,6 @@ input:disabled {
     var(--text);
 }
 
-
 .matlab-summary-card p {
   margin: 0;
 
@@ -1248,290 +1344,13 @@ input:disabled {
 }
 
 
-.matlab-flow {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 15px;
-
-  margin:
-    28px
-    0;
-
-  flex-wrap: wrap;
-}
-
-
-.flow-box {
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  min-width: 210px;
-
-  min-height: 82px;
-
-  padding:
-    14px
-    18px;
-
-  border:
-    1px
-    solid
-    var(--border);
-
-  border-radius: 10px;
-
-  background:
-    #fffafb;
-
-  text-align: center;
-}
-
-
-.flow-box strong {
-  color:
-    var(--text);
-}
-
-
-.flow-box span {
-  margin-top: 5px;
-
-  color:
-    var(--text-soft);
-
-  font-size: 12px;
-}
-
-
-.flow-box.highlight {
-  color: white;
-
-  border-color:
-    var(--wine);
-
-  background:
-    linear-gradient(
-      135deg,
-      #852249,
-      #a8295c
-    );
-}
-
-
-.flow-box.highlight strong,
-.flow-box.highlight span {
-  color: white;
-}
-
-
-.flow-arrow {
-  color:
-    var(--pink);
-
-  font-size: 24px;
-
-  font-weight: 800;
-}
-
-
-.matlab-image-grid {
-  display: grid;
-
-  grid-template-columns:
-    1fr;
-
-  gap: 20px;
-
-  margin:
-    25px
-    0;
-}
-
-
-.matlab-image-grid figure {
-  margin: 0;
-}
-
-
-.matlab-image-frame {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 100%;
-
-  overflow: hidden;
-
-  border:
-    1px
-    solid
-    var(--border);
-
-  border-radius: 12px;
-
-  background:
-    #f7f7f7;
-}
-
-
-.matlab-image-frame img {
-  width: 100%;
-
-  height: auto;
-
-  object-fit: contain;
-}
-
-
-.matlab-image-grid figcaption {
-  margin-top: 8px;
-
-  color:
-    var(--text-soft);
-
-  text-align: center;
-
-  font-size: 13px;
-}
-
-
 /* =========================================================
-   MODEL COMPARISON
-========================================================= */
-
-.model-comparison-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0, 1fr)
-    );
-
-  gap: 20px;
-
-  margin:
-    22px
-    0;
-}
-
-
-.model-result-card {
-  padding:
-    22px;
-
-  border:
-    1px
-    solid
-    var(--border);
-
-  border-radius: 15px;
-
-  background: white;
-}
-
-
-.model-result-card.emphasized {
-  border:
-    2px
-    solid
-    #d88cab;
-
-  background:
-    #fffafd;
-}
-
-
-.model-tag {
-  display: inline-block;
-
-  padding:
-    5px
-    9px;
-
-  border-radius: 999px;
-
-  color:
-    var(--pink);
-
-  background:
-    var(--soft-pink-2);
-
-  font-size: 10px;
-
-  font-weight: 800;
-
-  letter-spacing: 1px;
-}
-
-
-.model-result-card h3 {
-  margin:
-    10px
-    0
-    3px;
-
-  color:
-    var(--text);
-}
-
-
-.test-count {
-  margin:
-    0
-    0
-    12px;
-
-  color:
-    var(--text-soft);
-
-  font-size: 13px;
-}
-
-
-.coverage-summary {
-  margin-top: 15px;
-
-  padding:
-    13px
-    15px;
-
-  border-radius: 10px;
-
-  background:
-    var(--soft-pink);
-}
-
-
-.coverage-summary p {
-  margin:
-    4px
-    0;
-
-  color:
-    var(--text-soft);
-
-  font-size: 13px;
-}
-
-
-/* =========================================================
-   STAGE 5 LINK ASSESSMENT
+   STAGE 5 — LINK ASSESSMENT
 ========================================================= */
 
 .link-form {
   margin-bottom: 22px;
 }
-
 
 .integration-status {
   margin:
@@ -1556,7 +1375,6 @@ input:disabled {
     );
 }
 
-
 .integration-status h3 {
   margin:
     13px
@@ -1567,7 +1385,6 @@ input:disabled {
     var(--text);
 }
 
-
 .integration-status > p {
   margin:
     14px
@@ -1577,7 +1394,6 @@ input:disabled {
   color:
     var(--text-soft);
 }
-
 
 .status-badge {
   display: inline-flex;
@@ -1599,7 +1415,6 @@ input:disabled {
     var(--soft-pink-2);
 
   font-size: 11px;
-
   font-weight: 800;
 }
 
@@ -1628,7 +1443,6 @@ footer {
   font-size: 13px;
 }
 
-
 footer p {
   margin:
     4px
@@ -1640,27 +1454,23 @@ footer p {
    TABLET
 ========================================================= */
 
-@media (
-  max-width: 900px
-) {
+@media (max-width: 900px) {
 
   .prototype-container {
     width:
       min(
-        100% - 24px,
+        calc(100% - 24px),
         1200px
       );
 
     margin-top: 18px;
   }
 
-
   .panel {
     padding:
       28px
       24px;
   }
-
 
   .progress-navigation {
     overflow-x: auto;
@@ -1669,14 +1479,12 @@ footer p {
       flex-start;
   }
 
-
   .progress-item {
     flex:
       0
       0
       145px;
   }
-
 
   .progress-line {
     flex:
@@ -1685,12 +1493,21 @@ footer p {
       20px;
   }
 
-
-  .model-comparison-grid {
+  .metric-grid {
     grid-template-columns:
-      1fr;
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
   }
 
+  .matlab-demo-metrics {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
 
   .satellite-image-frame,
   .image-placeholder {
@@ -1705,9 +1522,7 @@ footer p {
    MOBILE
 ========================================================= */
 
-@media (
-  max-width: 650px
-) {
+@media (max-width: 650px) {
 
   .site-header {
     padding:
@@ -1715,22 +1530,18 @@ footer p {
       18px;
   }
 
-
   .site-header h1 {
     font-size: 30px;
   }
-
 
   .header-description {
     font-size: 14px;
   }
 
-
   .prototype-container {
     width:
       calc(100% - 18px);
   }
-
 
   .panel {
     padding:
@@ -1740,12 +1551,10 @@ footer p {
     border-radius: 15px;
   }
 
-
   .section-heading {
     align-items:
       flex-start;
   }
-
 
   .section-number {
     flex-basis: 48px;
@@ -1754,28 +1563,23 @@ footer p {
     height: 48px;
   }
 
-
   .section-heading h2 {
     font-size: 25px;
   }
-
 
   .form-grid {
     grid-template-columns:
       1fr;
   }
 
-
   .form-field.full-width {
     grid-column: auto;
   }
-
 
   .location-banner {
     grid-template-columns:
       1fr;
   }
-
 
   .location-banner strong {
     justify-self: start;
@@ -1783,17 +1587,14 @@ footer p {
     text-align: left;
   }
 
-
   .location-banner small {
     grid-column: auto;
   }
-
 
   .metric-grid {
     grid-template-columns:
       1fr;
   }
-
 
   .navigation-actions {
     flex-direction: column;
@@ -1801,37 +1602,76 @@ footer p {
     align-items: stretch;
   }
 
-
   .navigation-actions span {
     display: none;
   }
-
 
   .navigation-actions button {
     width: 100%;
   }
 
-
   .matlab-flow {
     flex-direction: column;
   }
 
-
   .flow-box {
     width: 100%;
   }
-
 
   .flow-arrow {
     transform:
       rotate(90deg);
   }
 
+  .matlab-demo-metrics {
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .matlab-output-grid {
+    grid-template-columns:
+      1fr;
+  }
 
   .satellite-image-frame,
   .image-placeholder {
     min-height:
       260px;
+  }
+
+  .satellite-toolbar {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .satellite-toolbar .primary-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 430px) {
+
+  .matlab-demo-metrics {
+    grid-template-columns:
+      1fr;
+  }
+
+  .progress-item {
+    flex-basis:
+      125px;
+  }
+
+  .section-heading {
+    gap: 12px;
   }
 
 }
